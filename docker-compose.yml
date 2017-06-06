@@ -1,0 +1,18 @@
+version: '2'
+services:
+ nginx:
+   build: 
+     context: ./nginx
+     args: 
+         useruid: 64182      
+   volumes_from: ['fpm:rw']
+   ports: ['80:80']
+ fpm:
+   build: 
+     context: ./php
+     args:
+       useruid: 64182
+   volumes: ['./wiki:/var/www:rw']
+   command: sh -c "chown -R nginx-php:nginx-php ./ ; php-fpm"
+#volumes:
+#     wiki:

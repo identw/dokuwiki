@@ -1,6 +1,7 @@
 version: '2'
 services:
  nginx:
+   restart: always
    build: 
      context: ./nginx
      args: 
@@ -8,6 +9,7 @@ services:
    volumes_from: ['fpm:ro']
    ports: ['127.0.0.1:65004:80']
  fpm:
+   restart: always
    build: 
      context: ./php
      args:

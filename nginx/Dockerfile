@@ -1,7 +1,6 @@
 FROM nginx:1.13.0-alpine
 MAINTAINER ilya karataev <ilkarvet89@gmail.com>
 ARG useruid
-#RUN uid=`echo $((64000 + RANDOM % 1000))` && \
 RUN	addgroup -g $useruid nginx-php && \
 	adduser -u $useruid -S -s /bin/false -h /var/www/ nginx-php && \
 	addgroup nginx-php nginx-php && \

@@ -4,14 +4,14 @@ services:
    build: 
      context: ./nginx
      args: 
-         useruid: 64182      
-   volumes_from: ['fpm:rw']
-   ports: ['80:80']
+         useruid: $USERID
+   volumes_from: ['fpm:ro']
+   ports: ['127.0.0.1:65004:80']
  fpm:
    build: 
      context: ./php
      args:
-       useruid: 64182
+       useruid: $USERID
    volumes: ['./wiki:/var/www:rw']
    command: sh -c "chown -R nginx-php:nginx-php ./ ; php-fpm"
 #volumes:

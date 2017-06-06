@@ -16,5 +16,5 @@ services:
        useruid: $USERID
    volumes: ['./wiki:/var/www:rw']
    command: sh -c "chown -R nginx-php:nginx-php ./ ; php-fpm"
-#volumes:
-#     wiki:
+volumes:
+     wiki:
